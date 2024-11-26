@@ -13,8 +13,8 @@ export default {
         // Sample collection and processing
         ['sample_collector_sample_ID', []], // takes DEXA SPECIMEN_ID, SAMPLE_ID
         ['alternative_sample_ID', []], // takes DEXA LFZ_ADDITIONAL_SAMPLE_ID
-        ['collected_by_institution_name', []], // takes DEXA SUBMITTINGORG_1
-        ['collected_by_laboratory_name', []], // takes DEXA SUBMITTINGLAB_1
+        ['sample_collected_by', []], // takes DEXA SUBMITTINGORG_1
+        ['sample_collected_by_laboratory_name', []], // takes DEXA SUBMITTINGLAB_1
         ['sample_collection_project_name', []],
         ['sample_plan_name', []],
         ['sample_plan_ID', []],
@@ -23,13 +23,13 @@ export default {
         ['purpose_of_sampling', []],
         ['experimental_activity', []],
         ['experimental_activity_details', []],
-        ['sample_processing', []],
+        ['specimen_processing', []],
         ['geo_loc_name (country)', []], // takes DEXA COUNTRY_1
         ['geo_loc_name (state/province/region)', []], // takes DEXA PROVINCE_1
-        ['food_product_origin geo_loc_name (country)', []],
-        ['host_origin geo_loc_name (country)', []],
-        ['latitude_of_sample_collection', []],
-        ['longitude_of_sample_collection', []],
+        ['food_product_origin_geo_loc_name (country)', []],
+        ['host_origin_geo_loc_name (country)', []],
+        ['geo_loc latitude', []],
+        ['geo_loc longitude', []],
         ['sample_collection_date', []], // takes DEXA DATECOLLECTED_1
         ['sample_received_date', []],
         ['original_sample_description', []],
@@ -59,7 +59,7 @@ export default {
         ['progeny_isolate_ID', []],
         ['IRIDA_isolate_ID', []],
         ['IRIDA_project_ID', []],
-        ['isolated_by_institution_name', []],
+        ['isolated_by', []],
         ['isolated_by_laboratory_name', []],
         ['isolated_by_contact_name', []],
         ['isolated_by_contact_email', []],
@@ -71,7 +71,7 @@ export default {
         ['phagetype', []], // takes DEXA FINAL_ID_PHAGETYPE
         // Sequence information
         ['library_ID', []],
-        ['sequenced_by_institution_name', []],
+        ['sequenced_by', []],
         ['sequenced_by_laboratory_name', []],
         ['sequenced_by_contact_name', []],
         ['sequenced_by_contact_email', []],
@@ -79,11 +79,11 @@ export default {
         ['sequencing_project_name', []],
         ['sequencing_platform', []],
         ['sequencing_instrument', []],
-        ['sequencing_method', []],
+        ['sequencing_protocol', []],
         ['r1_fastq_filename', []],
         ['r1_fastq_filename', []],
         ['fast5_filename', []],
-        ['assembly_filename', []],
+        ['genome_sequence_filename', []],
         //  Public repository information
         ['publication_ID', []],
         ['attribute_package', []],
@@ -96,7 +96,7 @@ export default {
         //['sample_name',                             []], NEW FIELD??
         //['collected_by',                            []], DIFFERENT FIELD
         ['anatomical_material', []], // MISSING FIELD  // CALCULATED in RuleDB
-        //['laboratory_name',                         []], --> collected_by_laboratory_name?? // takes SUBMITTINGLAB_1
+        //['laboratory_name',                         []], --> sample_collected_by_laboratory_name?? // takes SUBMITTINGLAB_1
         ['DataHarmonizer provenance', []],
       ]);
 
@@ -285,7 +285,7 @@ export default {
         food_product_properties: '',
         'host (common name)': '',
         host_developmental_stage: '', // NEW!!!!
-        sample_processing: '', // NEW!!!!
+        specimen_processing: '', // NEW!!!!
         // Source fields and their content added below
       };
 
