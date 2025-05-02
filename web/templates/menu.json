@@ -218,5 +218,200 @@
     "locales": [
       "en"
     ]
+  },
+  "mixs": {
+    "folder": "MIxS",
+    "id": "https://w3id.org/mixs",
+    "version": "v6.2.0",
+    "templates": {
+      "MigsBa": {
+        "name": "MigsBa",
+        "display": true
+      },
+      "Agriculture": {
+        "name": "Agriculture",
+        "display": true
+      },
+      "Air": {
+        "name": "Air",
+        "display": true
+      },
+      "BuiltEnvironment": {
+        "name": "BuiltEnvironment",
+        "display": true
+      },
+      "FoodAnimalAndAnimalFeed": {
+        "name": "FoodAnimalAndAnimalFeed",
+        "display": true
+      },
+      "FoodFarmEnvironment": {
+        "name": "FoodFarmEnvironment",
+        "display": true
+      },
+      "FoodFoodProductionFacility": {
+        "name": "FoodFoodProductionFacility",
+        "display": true
+      },
+      "FoodHumanFoods": {
+        "name": "FoodHumanFoods",
+        "display": true
+      },
+      "HostAssociated": {
+        "name": "HostAssociated",
+        "display": true
+      },
+      "HumanAssociated": {
+        "name": "HumanAssociated",
+        "display": true
+      },
+      "HumanGut": {
+        "name": "HumanGut",
+        "display": true
+      },
+      "HumanOral": {
+        "name": "HumanOral",
+        "display": true
+      },
+      "HumanSkin": {
+        "name": "HumanSkin",
+        "display": true
+      },
+      "HumanVaginal": {
+        "name": "HumanVaginal",
+        "display": true
+      },
+      "HydrocarbonResourcesCores": {
+        "name": "HydrocarbonResourcesCores",
+        "display": true
+      },
+      "HydrocarbonResourcesFluidsSwabs": {
+        "name": "HydrocarbonResourcesFluidsSwabs",
+        "display": true
+      },
+      "MicrobialMatBiofilm": {
+        "name": "MicrobialMatBiofilm",
+        "display": true
+      },
+      "MiscellaneousNaturalOrArtificialEnvironment": {
+        "name": "MiscellaneousNaturalOrArtificialEnvironment",
+        "display": true
+      },
+      "PlantAssociated": {
+        "name": "PlantAssociated",
+        "display": true
+      },
+      "Sediment": {
+        "name": "Sediment",
+        "display": true
+      },
+      "Soil": {
+        "name": "Soil",
+        "display": true
+      },
+      "SymbiontAssociated": {
+        "name": "SymbiontAssociated",
+        "display": true
+      },
+      "WastewaterSludge": {
+        "name": "WastewaterSludge",
+        "display": true
+      },
+      "Water": {
+        "name": "Water",
+        "display": true
+      },
+      "MigsBaAgriculture": {
+        "name": "MigsBaAgriculture",
+        "display": true
+      },
+      "MigsBaAir": {
+        "name": "MigsBaAir",
+        "display": true
+      },
+      "MigsBaBuiltEnvironment": {
+        "name": "MigsBaBuiltEnvironment",
+        "display": true
+      },
+      "MigsBaFoodAnimalAndAnimalFeed": {
+        "name": "MigsBaFoodAnimalAndAnimalFeed",
+        "display": true
+      },
+      "MigsBaFoodFarmEnvironment": {
+        "name": "MigsBaFoodFarmEnvironment",
+        "display": true
+      },
+      "MigsBaFoodFoodProductionFacility": {
+        "name": "MigsBaFoodFoodProductionFacility",
+        "display": true
+      },
+      "MigsBaFoodHumanFoods": {
+        "name": "MigsBaFoodHumanFoods",
+        "display": true
+      },
+      "MigsBaHostAssociated": {
+        "name": "MigsBaHostAssociated",
+        "display": true
+      },
+      "MigsBaHumanAssociated": {
+        "name": "MigsBaHumanAssociated",
+        "display": true
+      },
+      "MigsBaHumanGut": {
+        "name": "MigsBaHumanGut",
+        "display": true
+      },
+      "MigsBaHumanOral": {
+        "name": "MigsBaHumanOral",
+        "display": true
+      },
+      "MigsBaHumanSkin": {
+        "name": "MigsBaHumanSkin",
+        "display": true
+      },
+      "MigsBaHumanVaginal": {
+        "name": "MigsBaHumanVaginal",
+        "display": true
+      },
+      "MigsBaHydrocarbonResourcesCores": {
+        "name": "MigsBaHydrocarbonResourcesCores",
+        "display": true
+      },
+      "MigsBaHydrocarbonResourcesFluidsSwabs": {
+        "name": "MigsBaHydrocarbonResourcesFluidsSwabs",
+        "display": true
+      },
+      "MigsBaMicrobialMatBiofilm": {
+        "name": "MigsBaMicrobialMatBiofilm",
+        "display": true
+      },
+      "MigsBaMiscellaneousNaturalOrArtificialEnvironment": {
+        "name": "MigsBaMiscellaneousNaturalOrArtificialEnvironment",
+        "display": true
+      },
+      "MigsBaPlantAssociated": {
+        "name": "MigsBaPlantAssociated",
+        "display": true
+      },
+      "MigsBaSediment": {
+        "name": "MigsBaSediment",
+        "display": true
+      },
+      "MigsBaSoil": {
+        "name": "MigsBaSoil",
+        "display": true
+      },
+      "MigsBaSymbiontAssociated": {
+        "name": "MigsBaSymbiontAssociated",
+        "display": true
+      },
+      "MigsBaWastewaterSludge": {
+        "name": "MigsBaWastewaterSludge",
+        "display": true
+      },
+      "MigsBaWater": {
+        "name": "MigsBaWater",
+        "display": true
+      }
+    }
   }
 }
