@@ -1,3 +1,91 @@
+# Microbial DataHarmonizer
+
+This is a fork of the DataHarmonizer repository (https://github.com/cidgoh/DataHarmonizer) which contains additional validators for microbial sequence metdata.
+
+## How the new templates were made:
+1) clone the original DataHarmonizer repository
+2)Follow instructions similar to (https://github.com/MIxS-MInAS/MInAS-DataHarmonizer/blob/master/mixs-minas-instructions.md)
+* Install all needed dependencies:
+```
+sudo apt install nodejs npm
+sudo npm install -g corepack
+corepack enable
+```
+* Use yarn to install dependancies
+```
+yarn
+``` 
+Clone the linkml toolkit and install the developer version (see:(https://github.com/genomewalker/linkml-toolkit)
+* Make a new repository in the web/templates folder called ```MIxS``` and change into that directory
+* Make a file ```dh_class_text.txt``` that contains the following:
+```
+  dh_interface:
+    name: dh_interface
+    description: A DataHarmonizer interface
+    from_schema: https://github.com/MIxS-MInAS/minas
+  MInAS-checklists:
+    name: MInAS-checklists
+    description:
+      The Minimum Information about any Ancient Sequence (MInAS) project aims
+      to develop standardised metadata reporting schemes of ancient DNA samples and
+      sequencing data via community-based consensus and training.
+      This checklist contains relevant aDNA MIxS combinations plus the ancient and
+      radiocarbon extension
+    is_a: dh_interface
+
+```
+* Create an ```export.js``` file
+```
+echo "export default {};" > export.js
+```
+* Download the mixs-minas YAML file
+```
+MIXS_MINAS_VERSION=0.4.0
+curl -o mixs-minas.yaml https://raw.githubusercontent.com/MIxS-MInAS/MInAS/refs/tags/v$MIXS_MINAS_VERSION/src/mixs/schema/mixs-minas.yaml
+```
+* Use the linkml toolkit to subset the YAML file with appropriate classes:
+```
+lmtk subset --schema mixs-minas.yaml --output minas.yml --classes MigsBaAgriculture,MigsBaAir,MigsBaBuiltEnvironment,MigsBaFoodAnimalAndAnimalFeed,MigsBaFoodFarmEnvironment,MigsBaFoodFoodProductionFacility,MigsBaFoodHumanFoods,MigsBaHostAssociated,MigsBaHumanAssociated,MigsBaHumanGut,MigsBaHumanOral,MigsBaHumanSkin,MigsBaHumanVaginal,MigsBaHydrocarbonResourcesCores,MigsBaHydrocarbonResourcesFluidsSwabs,MigsBaMicrobialMatBiofilm,MigsBaMiscellaneousNaturalOrArtificialEnvironment,MigsBaPlantAssociated,MigsBaSediment,MigsBaSoil,MigsBaSymbiontAssociated,MigsBaWastewaterSludge,MigsBaWater
+```
+* Add the dh_interface class to the subset YAML file:
+```
+sed -i '/^classes:/r dh_class_text.txt' minas.yml
+```
+* Run the script to create a schema.json file and add the template to the menu
+```
+python ../../../script/linkml.py -i minas.yml -m
+```
+3) Test the website in development mode:
+```
+yarn dev
+```
+4) Build the website:
+```
+yarn build:web
+```
+5) Serve the website:
+```
+yarn serve
+```
+Troubleshooting Note:
+* I got a 404 error with serving and then did the following which resolved the issue:
+```
+cp -r web/templates/ web/dist/templates/
+```
+6) Host on github if desired:
+* In the main repo directory create a docs/ folder and copy the website build there:
+```
+mkdir docs
+cp -r web/dist/* docs
+```
+Troubleshooting Note:
+* I had to change some paths in the main.js file in order for github to properly recognize the path to the templates
+```templates/``` changed to ```/DataHarmonizer/templates/``` except for one in a Regex pattern that was changed to ```/DataHarmonizer\/templates/```
+
+
+
+# Original README:
+
 # DataHarmonizer
 
 A standardized browser-based spreadsheet editor and validator that can be run offline and locally, which works of of [LinkML](https://linkml.io/) data specifications. This open source project, created by the Centre for Infectious Disease Genomics and One Health (CIDGOH) at Simon Fraser University, is now a collaboration with contributions from the National Microbiome Data Collaborative (NMDC), the LinkML development team, and others. Read the open-source DataHarmonizer [manuscript](#manuscript) for more about the application's theory and design.
