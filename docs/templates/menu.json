@@ -238,28 +238,6 @@
       }
     }
   },
-  "Resource_SampleAnalysis": {
-    "folder": "RMTM_ils3",
-    "id": "https://example.com/Analysis",
-    "version": "1.0.0",
-    "templates": {
-      "AnalysisReport": {
-        "name": "AnalysisReport",
-        "display": true
-      }
-    }
-  },
-  "RMTM_ILS3_SampleAnalysis": {
-    "folder": "RMTM_ils3",
-    "id": "https://example.com/Analysis",
-    "version": "1.0.0",
-    "templates": {
-      "AnalysisReport": {
-        "name": "AnalysisReport",
-        "display": true
-      }
-    }
-  },
   "RMTM_ILS3_sample_results_validation": {
     "folder": "RMTM_ils3",
     "id": "https://example.com/Analysis",
