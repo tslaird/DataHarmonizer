@@ -82,7 +82,11 @@ Troubleshooting Note:
 * I had to change some paths in the main.js file in order for github to properly recognize the path to the templates
 ```templates/``` changed to ```/DataHarmonizer/templates/``` except for one in a Regex pattern that was changed to ```/DataHarmonizer\/templates/```
 
+* I also had to change paths within the "docs/index.html" from:
 
+"dist-schemas/schemas.js" -> "./dist-schemas/schemas.js"
+
+"scripts/main.js" -> "./scripts/main.js"
 
 # Original README:
 
