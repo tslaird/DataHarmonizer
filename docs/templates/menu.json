@@ -6,7 +6,7 @@
     "templates": {
       "CanCOGeNCovid19": {
         "name": "CanCOGeNCovid19",
-        "display": true
+        "display": false
       }
     },
     "locales": [
@@ -21,7 +21,7 @@
     "templates": {
       "GISAID": {
         "name": "GISAID",
-        "display": true
+        "display": false
       }
     }
   },
@@ -32,7 +32,7 @@
     "templates": {
       "PHA4GE": {
         "name": "PHA4GE",
-        "display": true
+        "display": false
       }
     }
   },
@@ -43,7 +43,7 @@
     "templates": {
       "GRDI": {
         "name": "GRDI",
-        "display": true
+        "display": false
       }
     }
   },
@@ -54,7 +54,7 @@
     "templates": {
       "PHACDexa": {
         "name": "PHACDexa",
-        "display": true
+        "display": false
       }
     }
   },
@@ -65,7 +65,7 @@
     "templates": {
       "AMBR": {
         "name": "AMBR",
-        "display": true
+        "display": false
       }
     }
   },
@@ -76,7 +76,7 @@
     "templates": {
       "PathogenAgnostic": {
         "name": "PathogenAgnostic",
-        "display": true
+        "display": false
       }
     }
   },
@@ -87,7 +87,7 @@
     "templates": {
       "Influenza": {
         "name": "Influenza",
-        "display": true
+        "display": false
       }
     }
   },
@@ -98,12 +98,12 @@
     "templates": {
       "Mpox": {
         "name": "Mpox",
-        "display": true,
+        "display": false,
         "version": "7.5.5"
       },
       "MpoxInternational": {
         "name": "MpoxInternational",
-        "display": true,
+        "display": false,
         "version": "8.5.5"
       }
     }
@@ -115,17 +115,17 @@
     "templates": {
       "WastewaterSARS-CoV-2": {
         "name": "WastewaterSARS-CoV-2",
-        "display": true,
+        "display": false,
         "version": "4.2.2"
       },
       "WastewaterAMR": {
         "name": "WastewaterAMR",
-        "display": true,
+        "display": false,
         "version": "4.2.2"
       },
       "WastewaterPathogenAgnostic": {
         "name": "WastewaterPathogenAgnostic",
-        "display": true,
+        "display": false,
         "version": "4.2.2"
       }
     }
@@ -137,27 +137,27 @@
     "templates": {
       "HPAI": {
         "name": "HPAI",
-        "display": true,
+        "display": false,
         "version": "1.0.0"
       },
       "HPAIFood": {
         "name": "HPAIFood",
-        "display": true,
+        "display": false,
         "version": "1.0.0"
       },
       "HPAIWW": {
         "name": "HPAIWW",
-        "display": true,
+        "display": false,
         "version": "1.0.0"
       },
       "HPAIEnviro": {
         "name": "HPAIEnviro",
-        "display": true,
+        "display": false,
         "version": "1.0.0"
       },
       "HPAIHost": {
         "name": "HPAIHost",
-        "display": true,
+        "display": false,
         "version": "1.0.0"
       }
     }
@@ -169,7 +169,7 @@
     "templates": {
       "B2B2B": {
         "name": "B2B2B",
-        "display": true
+        "display": false
       }
     }
   },
@@ -180,35 +180,35 @@
     "templates": {
       "Schema": {
         "name": "Schema",
-        "display": true
+        "display": false
       },
       "Prefix": {
         "name": "Prefix",
-        "display": true
+        "display": false
       },
       "Slot": {
         "name": "Slot",
-        "display": true
+        "display": false
       },
       "Enum": {
         "name": "Enum",
-        "display": true
+        "display": false
       },
       "PermissibleValue": {
         "name": "PermissibleValue",
-        "display": true
+        "display": false
       },
       "Class": {
         "name": "Class",
-        "display": true
+        "display": false
       },
       "SlotUsage": {
         "name": "SlotUsage",
-        "display": true
+        "display": false
       },
       "UniqueKey": {
         "name": "UniqueKey",
-        "display": true
+        "display": false
       },
       "Container": {
         "name": "Container",
