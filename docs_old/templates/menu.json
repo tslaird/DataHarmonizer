@@ -1,0 +1,13 @@
+{
+  "RMTM_ILS3_sample_results_validation": {
+    "folder": "RMTM_ils3",
+    "id": "https://example.com/Analysis",
+    "version": "1.0.0",
+    "templates": {
+      "RMTM_ILS3_sample_results_validation": {
+        "name": "RMTM_ILS3_sample_results_validation",
+        "display": true
+      }
+    }
+  }
+}

@@ -1,0 +1,133 @@
+name: RMTM_ILS3_sample_results_validation
+description: A schema for reporting sample contamination and taxonomic classification
+id: https://example.com/Analysis
+version: 1.0.0
+default_prefix: https://example.com/Analysis/
+default_range: string
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  shex: http://www.w3.org/ns/shex#
+  schema: http://schema.org/
+
+types:
+  WhitespaceMinimizedString:
+    description: A string that has all whitespace trimmed off of beginning and end, and all internal whitespace segments reduced to single spaces.
+    typeof: string
+    base: str
+    uri: xsd:token
+  string:
+    description: A character string
+    exact_mappings:
+      - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    description: An integer
+    exact_mappings:
+      - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    description: A binary (true or false) value
+    exact_mappings:
+      - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+
+enums:
+  TaxonomicRankEnum:
+    permissible_values:
+      Kingdom:
+        text: Kingdom
+      Phylum:
+        text: Phylum
+      Class:
+        text: Class
+      Order:
+        text: Order
+      Family:
+        text: Family
+      Genus:
+        text: Genus
+      Species:
+        text: Species
+      Strain:
+        text: Strain
+
+slots:
+  SampleUUID:
+    description: The 36-character unique identifier (UUID) for the sample
+    range: string
+    required: true
+    pattern: "^[0-9a-fA-F]{8}$"
+  DatasetAnalysisReporting:
+    description: Dataset analysis reporting (standardized format CSV / JSON file)
+    range: string
+    required: true
+    pattern: "^.*\\.(csv|json)$"
+  SampleContaminated:
+    description: was the sample contaminated (Binary yes/no)
+    range: boolean
+    required: true
+  DetectedTaxaDetails:
+    description: Multiple detected taxa with resolution and read counts.
+    range: string
+    multivalued: true
+    pattern: "^[^|]+\\|(Kingdom|Phylum|Class|Order|Family|Genus|Species|Strain)\\|[0-9]+$"
+  MinimumResolvedGenera:
+    description: Minimum resolved genera detected
+    range: integer
+  GeneraDetected:
+    description: what genera were detected?
+    range: string
+    multivalued: true
+  SpeciesDetected:
+    description: what species were detected?
+    range: string
+    multivalued: true
+
+classes:
+  dh_interface:
+    description: A DataHarmonizer interface
+  
+  RMTM_ILS3_sample_results_validation:
+    description: A class representing dataset validation for RMTM interlab study
+    is_a: dh_interface
+    slots:
+      - SampleUUID
+      - DatasetAnalysisReporting
+      - SampleContaminated
+      - DetectedTaxaDetails
+      - MinimumResolvedGenera
+      - GeneraDetected
+      - SpeciesDetected
+    slot_usage:
+      SampleUUID:
+        rank: 1
+      DatasetAnalysisReporting:
+        rank: 2
+        slot_group: Files
+      SampleContaminated:
+        rank: 3
+        slot_group: Status
+      DetectedTaxaDetails:
+        rank: 4
+        slot_group: Taxonomy
+      MinimumResolvedGenera:
+        rank: 5
+        slot_group: Metrics
+      GeneraDetected:
+        rank: 6
+        slot_group: Taxonomy
+      SpeciesDetected:
+        rank: 7
+        slot_group: Taxonomy
+
+settings:
+  Title_Case: "(((?<=\\b)[^a-z\\W]\\w*?|[\\W])+)"
+  UPPER_CASE: "[A-Z\\W\\d_]*"
+  lower_case: "[a-z\\W\\d_]*"
+
