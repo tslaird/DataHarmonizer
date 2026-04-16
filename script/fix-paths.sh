@@ -11,14 +11,13 @@ TARGET_DIR="$1"
 # Usage: ./fix-paths.sh <target-dir>
 
 # Update template paths in any main.js files under docs
-find "$TARGET_DIR" -type f -name "main.js" -exec sed -i 's#templates/#/DataHarmonizer/templates/#g' {} +
+# Update template paths in docs/scripts/main.js
+sed -i 's#templates/#/DataHarmonizer/templates/#g' "$TARGET_DIR/docs/scripts/main.js"
 
 # Fix escaped regex pattern in any files (adjust if needed)
-find "$TARGET_DIR" -type f -exec sed -i 's#/DataHarmonizer\\/templates/#/DataHarmonizer/templates/#g' {} +
+find "$TARGET_DIR" -type f -exec sed -i 's#templates\/#/DataHarmonizer/templates\/\#g' {} +
 
 # Update HTML file references for schema and script paths
-find "$TARGET_DIR" -type f -name "*.html" -exec sed -i \
-  -e 's#dist-schemas/schemas.js#./dist-schemas/schemas.js#g' \
-  -e 's#scripts/main.js#./scripts/main.js#g' {} +
+find "$TARGET_DIR" -type f -name "*.html" -exec sed -i -e 's#href="index.html"#href="./DataHarmonizer/index.html"#g' -e 's#url=index.html#url=./DataHarmonizer/index.html#g' -e 's#dist-schemas/schemas.js#./dist-schemas/schemas.js#g' -e 's#scripts/main.js#./scripts/main.js#g' {} \;
 
 echo "Path fixes applied."
