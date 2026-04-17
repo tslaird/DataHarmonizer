@@ -88,6 +88,18 @@ Troubleshooting Note:
 
 "scripts/main.js" -> "./scripts/main.js"
 
+
+# To synthesize the above, you can run this code block after creating a new template:
+```
+cp -r web/templates/ web/dist/templates/
+yarn build:web
+rm -r docs/ # remove the old version so it doesnt just copy over new stuff but still leave the old stuff
+mkdir docs
+cp -r web/dist/* docs
+script/fix-paths.sh docs
+```
+
+
 # Original README:
 
 # DataHarmonizer
