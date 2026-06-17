@@ -41,10 +41,10 @@ types:
     repr: bool
 
 enums:
-  SampleContaminationStatusEnum:
+  TaxaContaminationStatusEnum:
     permissible_values:
-      contaminated: {title: "yes"}
-      not_contaminated: {title: "no"}
+      yes: {title: "yes"}
+      no: {title: "no"}
   TaxonomicRankEnum:
     permissible_values:
       # Primary & High Level
@@ -155,9 +155,9 @@ slots:
     range: string
     required: true
     pattern: "^[0-9a-fA-F]{8}$"
-  sample_contaminated:
-    description: Whether the sample is considered contaminated based on bioinformatic workflow output
-    range: SampleContaminationStatusEnum
+  is_sterility_contaminant:
+    description: Whether the taxa detected is considered a sterility contaminant based on bioinformatic workflow output. In other words, would the detected taxa indicate that a cell therapy product is contaminated with said taxa?
+    range: TaxaContaminationStatusEnum
     required: true
   taxa_scientific_name:
     description: >-
@@ -189,29 +189,29 @@ classes:
     is_a: dh_interface
     slots:
       - sample_uuid
-      - sample_contaminated
       - taxa_scientific_name
       - taxa_rank
       - taxa_read_counts
+      - is_sterility_contaminant
       - notes
     slot_usage:
       sample_uuid:
         rank: 1
-      sample_contaminated:
-        rank: 2
       taxa_scientific_name:
-        rank: 3
+        rank: 2
       taxa_rank:
-        rank: 4
+        rank: 3
       taxa_read_counts:
-        rank: 5
+        rank: 4
       notes:
+        rank: 5
+      is_sterility_contaminant:
         rank: 6
 
     # rules:
     # - preconditions:
     #     slot_conditions:
-    #       sample_contaminated:
+    #       is_sterility_contaminant:
     #         any_of:
     #           - equals_string: "yes"
     #   postconditions:

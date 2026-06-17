@@ -76,16 +76,16 @@
     }
   },
   "enums": {
-    "SampleContaminationStatusEnum": {
-      "name": "SampleContaminationStatusEnum",
+    "TaxaContaminationStatusEnum": {
+      "name": "TaxaContaminationStatusEnum",
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "permissible_values": {
-        "contaminated": {
-          "text": "contaminated",
+        "True": {
+          "text": "True",
           "title": "yes"
         },
-        "not_contaminated": {
-          "text": "not_contaminated",
+        "False": {
+          "text": "False",
           "title": "no"
         }
       }
@@ -293,14 +293,14 @@
       "required": true,
       "pattern": "^[0-9a-fA-F]{8}$"
     },
-    "sample_contaminated": {
-      "name": "sample_contaminated",
-      "description": "Whether the sample is considered contaminated based on bioinformatic workflow output",
+    "is_sterility_contaminant": {
+      "name": "is_sterility_contaminant",
+      "description": "Whether the taxa detected is considered a sterility contaminant based on bioinformatic workflow output. In other words, would the detected taxa indicate that a cell therapy product is contaminated with said taxa?",
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "domain_of": [
         "RMTM_ILS3_sample_results_validation"
       ],
-      "range": "SampleContaminationStatusEnum",
+      "range": "TaxaContaminationStatusEnum",
       "required": true
     },
     "taxa_scientific_name": {
@@ -362,24 +362,24 @@
           "name": "sample_uuid",
           "rank": 1
         },
-        "sample_contaminated": {
-          "name": "sample_contaminated",
-          "rank": 2
-        },
         "taxa_scientific_name": {
           "name": "taxa_scientific_name",
-          "rank": 3
+          "rank": 2
         },
         "taxa_rank": {
           "name": "taxa_rank",
-          "rank": 4
+          "rank": 3
         },
         "taxa_read_counts": {
           "name": "taxa_read_counts",
-          "rank": 5
+          "rank": 4
         },
         "notes": {
           "name": "notes",
+          "rank": 5
+        },
+        "is_sterility_contaminant": {
+          "name": "is_sterility_contaminant",
           "rank": 6
         }
       },
@@ -398,24 +398,11 @@
           "required": true,
           "pattern": "^[0-9a-fA-F]{8}$"
         },
-        "sample_contaminated": {
-          "name": "sample_contaminated",
-          "description": "Whether the sample is considered contaminated based on bioinformatic workflow output",
-          "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
-          "rank": 2,
-          "alias": "sample_contaminated",
-          "owner": "RMTM_ILS3_sample_results_validation",
-          "domain_of": [
-            "RMTM_ILS3_sample_results_validation"
-          ],
-          "range": "SampleContaminationStatusEnum",
-          "required": true
-        },
         "taxa_scientific_name": {
           "name": "taxa_scientific_name",
           "description": "The scientific name for the detected taxon",
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
-          "rank": 3,
+          "rank": 2,
           "slot_uri": "ncbitaxon:scientific_name",
           "alias": "taxa_scientific_name",
           "owner": "RMTM_ILS3_sample_results_validation",
@@ -428,7 +415,7 @@
           "name": "taxa_rank",
           "description": "The taxonomic rank of the detected organism.",
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
-          "rank": 4,
+          "rank": 3,
           "slot_uri": "TAXRANK:0000000",
           "alias": "taxa_rank",
           "owner": "RMTM_ILS3_sample_results_validation",
@@ -442,7 +429,7 @@
           "name": "taxa_read_counts",
           "description": "A data item determining how many sequence reads have been assigned for a given taxon.",
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
-          "rank": 5,
+          "rank": 4,
           "slot_uri": "STATO:0000064",
           "alias": "taxa_read_counts",
           "owner": "RMTM_ILS3_sample_results_validation",
@@ -453,11 +440,24 @@
           "required": false,
           "minimum_value": 0
         },
+        "is_sterility_contaminant": {
+          "name": "is_sterility_contaminant",
+          "description": "Whether the taxa detected is considered a sterility contaminant based on bioinformatic workflow output. In other words, would the detected taxa indicate that a cell therapy product is contaminated with said taxa?",
+          "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+          "rank": 6,
+          "alias": "is_sterility_contaminant",
+          "owner": "RMTM_ILS3_sample_results_validation",
+          "domain_of": [
+            "RMTM_ILS3_sample_results_validation"
+          ],
+          "range": "TaxaContaminationStatusEnum",
+          "required": true
+        },
         "notes": {
           "name": "notes",
           "description": "Additional notes about the sample classification event",
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
-          "rank": 6,
+          "rank": 5,
           "alias": "notes",
           "owner": "RMTM_ILS3_sample_results_validation",
           "domain_of": [
