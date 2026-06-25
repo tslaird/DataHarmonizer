@@ -1,11 +1,11 @@
 {
-  "RMTM_ILS3_sample_results_validation": {
+  "RMTM_ILS3_result": {
     "folder": "rmtm-ils3",
     "id": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
     "version": null,
     "templates": {
-      "RMTM_ILS3_sample_results_validation": {
-        "name": "RMTM_ILS3_sample_results_validation",
+      "RMTM_ILS3_result": {
+        "name": "RMTM_ILS3_result",
         "display": true
       }
     }

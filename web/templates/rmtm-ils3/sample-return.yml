@@ -1,4 +1,4 @@
-name: RMTM_ILS3_sample_results_validation
+name: RMTM_ILS3_result
 description: A schema for reporting sample contamination and taxonomic classification
 id: https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml
 default_prefix: https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml
@@ -184,7 +184,7 @@ classes:
   dh_interface:
     description: A DataHarmonizer interface
   
-  RMTM_ILS3_sample_results_validation:
+  RMTM_ILS3_result:
     description: A class representing dataset validation for RMTM interlaboratory study
     is_a: dh_interface
     slots:

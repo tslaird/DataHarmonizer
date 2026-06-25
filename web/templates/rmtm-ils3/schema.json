@@ -1,5 +1,5 @@
 {
-  "name": "RMTM_ILS3_sample_results_validation",
+  "name": "RMTM_ILS3_result",
   "description": "A schema for reporting sample contamination and taxonomic classification",
   "id": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
   "prefixes": {
@@ -287,7 +287,7 @@
       "description": "The 8-character unique identifier (UUID) for the sample",
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "domain_of": [
-        "RMTM_ILS3_sample_results_validation"
+        "RMTM_ILS3_result"
       ],
       "range": "string",
       "required": true,
@@ -298,7 +298,7 @@
       "description": "Whether the taxa detected is considered a sterility contaminant based on bioinformatic workflow output. In other words, would the detected taxa indicate that a cell therapy product is contaminated with said taxa?",
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "domain_of": [
-        "RMTM_ILS3_sample_results_validation"
+        "RMTM_ILS3_result"
       ],
       "range": "TaxaContaminationStatusEnum",
       "required": true
@@ -309,7 +309,7 @@
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "slot_uri": "ncbitaxon:scientific_name",
       "domain_of": [
-        "RMTM_ILS3_sample_results_validation"
+        "RMTM_ILS3_result"
       ],
       "range": "string"
     },
@@ -319,7 +319,7 @@
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "slot_uri": "TAXRANK:0000000",
       "domain_of": [
-        "RMTM_ILS3_sample_results_validation"
+        "RMTM_ILS3_result"
       ],
       "range": "TaxonomicRankEnum",
       "required": false
@@ -330,7 +330,7 @@
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "slot_uri": "STATO:0000064",
       "domain_of": [
-        "RMTM_ILS3_sample_results_validation"
+        "RMTM_ILS3_result"
       ],
       "range": "integer",
       "required": false,
@@ -341,7 +341,7 @@
       "description": "Additional notes about the sample classification event",
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "domain_of": [
-        "RMTM_ILS3_sample_results_validation"
+        "RMTM_ILS3_result"
       ],
       "range": "string"
     }
@@ -352,8 +352,8 @@
       "description": "A DataHarmonizer interface",
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml"
     },
-    "RMTM_ILS3_sample_results_validation": {
-      "name": "RMTM_ILS3_sample_results_validation",
+    "RMTM_ILS3_result": {
+      "name": "RMTM_ILS3_result",
       "description": "A class representing dataset validation for RMTM interlaboratory study",
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "is_a": "dh_interface",
@@ -390,9 +390,9 @@
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
           "rank": 1,
           "alias": "sample_uuid",
-          "owner": "RMTM_ILS3_sample_results_validation",
+          "owner": "RMTM_ILS3_result",
           "domain_of": [
-            "RMTM_ILS3_sample_results_validation"
+            "RMTM_ILS3_result"
           ],
           "range": "string",
           "required": true,
@@ -405,9 +405,9 @@
           "rank": 2,
           "slot_uri": "ncbitaxon:scientific_name",
           "alias": "taxa_scientific_name",
-          "owner": "RMTM_ILS3_sample_results_validation",
+          "owner": "RMTM_ILS3_result",
           "domain_of": [
-            "RMTM_ILS3_sample_results_validation"
+            "RMTM_ILS3_result"
           ],
           "range": "string"
         },
@@ -418,9 +418,9 @@
           "rank": 3,
           "slot_uri": "TAXRANK:0000000",
           "alias": "taxa_rank",
-          "owner": "RMTM_ILS3_sample_results_validation",
+          "owner": "RMTM_ILS3_result",
           "domain_of": [
-            "RMTM_ILS3_sample_results_validation"
+            "RMTM_ILS3_result"
           ],
           "range": "TaxonomicRankEnum",
           "required": false
@@ -432,9 +432,9 @@
           "rank": 4,
           "slot_uri": "STATO:0000064",
           "alias": "taxa_read_counts",
-          "owner": "RMTM_ILS3_sample_results_validation",
+          "owner": "RMTM_ILS3_result",
           "domain_of": [
-            "RMTM_ILS3_sample_results_validation"
+            "RMTM_ILS3_result"
           ],
           "range": "integer",
           "required": false,
@@ -446,9 +446,9 @@
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
           "rank": 6,
           "alias": "is_sterility_contaminant",
-          "owner": "RMTM_ILS3_sample_results_validation",
+          "owner": "RMTM_ILS3_result",
           "domain_of": [
-            "RMTM_ILS3_sample_results_validation"
+            "RMTM_ILS3_result"
           ],
           "range": "TaxaContaminationStatusEnum",
           "required": true
@@ -459,9 +459,9 @@
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
           "rank": 5,
           "alias": "notes",
-          "owner": "RMTM_ILS3_sample_results_validation",
+          "owner": "RMTM_ILS3_result",
           "domain_of": [
-            "RMTM_ILS3_sample_results_validation"
+            "RMTM_ILS3_result"
           ],
           "range": "string"
         }
