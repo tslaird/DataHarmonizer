@@ -1,0 +1,486 @@
+{
+  "name": "RMTM_ILS3_result",
+  "description": "A schema for reporting sample contamination and taxonomic classification",
+  "id": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+  "prefixes": {
+    "linkml": {
+      "prefix_prefix": "linkml",
+      "prefix_reference": "https://w3id.org/linkml/"
+    },
+    "xsd": {
+      "prefix_prefix": "xsd",
+      "prefix_reference": "http://www.w3.org/2001/XMLSchema#"
+    },
+    "shex": {
+      "prefix_prefix": "shex",
+      "prefix_reference": "http://www.w3.org/ns/shex#"
+    },
+    "schema": {
+      "prefix_prefix": "schema",
+      "prefix_reference": "http://schema.org/"
+    },
+    "ncbitaxon": {
+      "prefix_prefix": "ncbitaxon",
+      "prefix_reference": "http://purl.obolibrary.org/obo/ncbitaxon#"
+    },
+    "TAXRANK": {
+      "prefix_prefix": "TAXRANK",
+      "prefix_reference": "http://purl.obolibrary.org/obo/TAXRANK_"
+    },
+    "STATO": {
+      "prefix_prefix": "STATO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/STATO_"
+    }
+  },
+  "default_prefix": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+  "default_range": "string",
+  "types": {
+    "WhitespaceMinimizedString": {
+      "name": "WhitespaceMinimizedString",
+      "description": "A string that has all whitespace trimmed off of beginning and end, and all internal whitespace segments reduced to single spaces.",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "typeof": "string",
+      "base": "str",
+      "uri": "xsd:token"
+    },
+    "string": {
+      "name": "string",
+      "description": "A character string",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "exact_mappings": [
+        "schema:Text"
+      ],
+      "base": "str",
+      "uri": "xsd:string"
+    },
+    "integer": {
+      "name": "integer",
+      "description": "An integer",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "exact_mappings": [
+        "schema:Integer"
+      ],
+      "base": "int",
+      "uri": "xsd:integer"
+    },
+    "boolean": {
+      "name": "boolean",
+      "description": "A binary (true or false) value",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "exact_mappings": [
+        "schema:Boolean"
+      ],
+      "base": "Bool",
+      "uri": "xsd:boolean",
+      "repr": "bool"
+    }
+  },
+  "enums": {
+    "TaxaContaminationStatusEnum": {
+      "name": "TaxaContaminationStatusEnum",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "permissible_values": {
+        "True": {
+          "text": "True",
+          "title": "yes"
+        },
+        "False": {
+          "text": "False",
+          "title": "no"
+        }
+      }
+    },
+    "TaxonomicRankEnum": {
+      "name": "TaxonomicRankEnum",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "permissible_values": {
+        "domain": {
+          "text": "domain",
+          "meaning": "TAXRANK:0000037"
+        },
+        "superkingdom": {
+          "text": "superkingdom",
+          "meaning": "TAXRANK:0000022"
+        },
+        "kingdom": {
+          "text": "kingdom",
+          "meaning": "TAXRANK:0000017"
+        },
+        "subkingdom": {
+          "text": "subkingdom",
+          "meaning": "TAXRANK:0000029"
+        },
+        "phylum": {
+          "text": "phylum",
+          "meaning": "TAXRANK:0000001"
+        },
+        "subphylum": {
+          "text": "subphylum",
+          "meaning": "TAXRANK:0000008"
+        },
+        "superclass": {
+          "text": "superclass",
+          "meaning": "TAXRANK:0000015"
+        },
+        "class": {
+          "text": "class",
+          "meaning": "TAXRANK:0000002"
+        },
+        "subclass": {
+          "text": "subclass",
+          "meaning": "TAXRANK:0000007"
+        },
+        "infraclass": {
+          "text": "infraclass",
+          "meaning": "TAXRANK:0000019"
+        },
+        "superorder": {
+          "text": "superorder",
+          "meaning": "TAXRANK:0000020"
+        },
+        "order": {
+          "text": "order",
+          "meaning": "TAXRANK:0000003"
+        },
+        "suborder": {
+          "text": "suborder",
+          "meaning": "TAXRANK:0000014"
+        },
+        "infraorder": {
+          "text": "infraorder",
+          "meaning": "TAXRANK:0000013"
+        },
+        "parvorder": {
+          "text": "parvorder",
+          "meaning": "TAXRANK:0000021"
+        },
+        "superfamily": {
+          "text": "superfamily",
+          "meaning": "TAXRANK:0000018"
+        },
+        "family": {
+          "text": "family",
+          "meaning": "TAXRANK:0000004"
+        },
+        "subfamily": {
+          "text": "subfamily",
+          "meaning": "TAXRANK:0000024"
+        },
+        "tribe": {
+          "text": "tribe",
+          "meaning": "TAXRANK:0000025"
+        },
+        "subtribe": {
+          "text": "subtribe",
+          "meaning": "TAXRANK:0000028"
+        },
+        "genus": {
+          "text": "genus",
+          "meaning": "TAXRANK:0000005"
+        },
+        "subgenus": {
+          "text": "subgenus",
+          "meaning": "TAXRANK:0000009"
+        },
+        "species group": {
+          "text": "species group",
+          "meaning": "TAXRANK:0000010"
+        },
+        "species subgroup": {
+          "text": "species subgroup",
+          "meaning": "TAXRANK:0000011"
+        },
+        "species": {
+          "text": "species",
+          "meaning": "TAXRANK:0000006"
+        },
+        "subspecies": {
+          "text": "subspecies",
+          "meaning": "TAXRANK:0000023"
+        },
+        "varietas": {
+          "text": "varietas",
+          "meaning": "TAXRANK:0000016"
+        },
+        "subvariety": {
+          "text": "subvariety",
+          "meaning": "TAXRANK:0000051"
+        },
+        "forma": {
+          "text": "forma",
+          "meaning": "TAXRANK:0000026"
+        },
+        "forma specialis": {
+          "text": "forma specialis",
+          "meaning": "TAXRANK:00001005"
+        },
+        "realm": {
+          "text": "realm",
+          "meaning": "TAXRANK:0001013"
+        },
+        "clade": {
+          "text": "clade",
+          "meaning": "TAXRANK:0001004"
+        },
+        "strain": {
+          "text": "strain",
+          "meaning": "TAXRANK:0001001"
+        },
+        "isolate": {
+          "text": "isolate",
+          "meaning": "TAXRANK:0001002"
+        },
+        "serotype": {
+          "text": "serotype",
+          "meaning": "TAXRANK:0001003"
+        },
+        "serogroup": {
+          "text": "serogroup",
+          "meaning": "TAXRANK:0001006"
+        },
+        "genotype": {
+          "text": "genotype",
+          "meaning": "TAXRANK:0001007"
+        },
+        "biotype": {
+          "text": "biotype",
+          "meaning": "TAXRANK:0001008"
+        },
+        "morph": {
+          "text": "morph",
+          "meaning": "TAXRANK:0001009"
+        },
+        "cohort": {
+          "text": "cohort",
+          "meaning": "TAXRANK:0001010"
+        },
+        "subcohort": {
+          "text": "subcohort",
+          "meaning": "TAXRANK:0001012"
+        },
+        "pathogroup": {
+          "text": "pathogroup",
+          "meaning": "TAXRANK:0001011"
+        },
+        "section": {
+          "text": "section",
+          "meaning": "TAXRANK:0000030"
+        },
+        "series": {
+          "text": "series",
+          "meaning": "TAXRANK:0000031"
+        },
+        "subsection": {
+          "text": "subsection",
+          "meaning": "TAXRANK:0000053"
+        },
+        "superphylum": {
+          "text": "superphylum",
+          "meaning": "TAXRANK:0000027"
+        }
+      }
+    }
+  },
+  "slots": {
+    "sample_uuid": {
+      "name": "sample_uuid",
+      "description": "The 8-character unique identifier (UUID) for the sample",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "domain_of": [
+        "RMTM_ILS3_result"
+      ],
+      "range": "string",
+      "required": true,
+      "pattern": "^[0-9a-fA-F]{8}$"
+    },
+    "is_sterility_contaminant": {
+      "name": "is_sterility_contaminant",
+      "description": "Whether the taxa detected is considered a sterility contaminant based on bioinformatic workflow output. In other words, would the detected taxa indicate that a cell therapy product is contaminated with said taxa?",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "domain_of": [
+        "RMTM_ILS3_result"
+      ],
+      "range": "TaxaContaminationStatusEnum",
+      "required": true
+    },
+    "taxa_scientific_name": {
+      "name": "taxa_scientific_name",
+      "description": "The scientific name for the detected taxon",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "slot_uri": "ncbitaxon:scientific_name",
+      "domain_of": [
+        "RMTM_ILS3_result"
+      ],
+      "range": "string"
+    },
+    "taxa_rank": {
+      "name": "taxa_rank",
+      "description": "The taxonomic rank of the detected organism.",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "slot_uri": "TAXRANK:0000000",
+      "domain_of": [
+        "RMTM_ILS3_result"
+      ],
+      "range": "TaxonomicRankEnum",
+      "required": false
+    },
+    "taxa_read_counts": {
+      "name": "taxa_read_counts",
+      "description": "A data item determining how many sequence reads have been assigned for a given taxon.",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "slot_uri": "STATO:0000064",
+      "domain_of": [
+        "RMTM_ILS3_result"
+      ],
+      "range": "integer",
+      "required": false,
+      "minimum_value": 0
+    },
+    "notes": {
+      "name": "notes",
+      "description": "Additional notes about the sample classification event",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "domain_of": [
+        "RMTM_ILS3_result"
+      ],
+      "range": "string"
+    }
+  },
+  "classes": {
+    "dh_interface": {
+      "name": "dh_interface",
+      "description": "A DataHarmonizer interface",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml"
+    },
+    "RMTM_ILS3_result": {
+      "name": "RMTM_ILS3_result",
+      "description": "A class representing dataset validation for RMTM interlaboratory study",
+      "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+      "is_a": "dh_interface",
+      "slot_usage": {
+        "sample_uuid": {
+          "name": "sample_uuid",
+          "rank": 1
+        },
+        "taxa_scientific_name": {
+          "name": "taxa_scientific_name",
+          "rank": 2
+        },
+        "taxa_rank": {
+          "name": "taxa_rank",
+          "rank": 3
+        },
+        "taxa_read_counts": {
+          "name": "taxa_read_counts",
+          "rank": 4
+        },
+        "notes": {
+          "name": "notes",
+          "rank": 5
+        },
+        "is_sterility_contaminant": {
+          "name": "is_sterility_contaminant",
+          "rank": 6
+        }
+      },
+      "attributes": {
+        "sample_uuid": {
+          "name": "sample_uuid",
+          "description": "The 8-character unique identifier (UUID) for the sample",
+          "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+          "rank": 1,
+          "alias": "sample_uuid",
+          "owner": "RMTM_ILS3_result",
+          "domain_of": [
+            "RMTM_ILS3_result"
+          ],
+          "range": "string",
+          "required": true,
+          "pattern": "^[0-9a-fA-F]{8}$"
+        },
+        "taxa_scientific_name": {
+          "name": "taxa_scientific_name",
+          "description": "The scientific name for the detected taxon",
+          "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+          "rank": 2,
+          "slot_uri": "ncbitaxon:scientific_name",
+          "alias": "taxa_scientific_name",
+          "owner": "RMTM_ILS3_result",
+          "domain_of": [
+            "RMTM_ILS3_result"
+          ],
+          "range": "string"
+        },
+        "taxa_rank": {
+          "name": "taxa_rank",
+          "description": "The taxonomic rank of the detected organism.",
+          "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+          "rank": 3,
+          "slot_uri": "TAXRANK:0000000",
+          "alias": "taxa_rank",
+          "owner": "RMTM_ILS3_result",
+          "domain_of": [
+            "RMTM_ILS3_result"
+          ],
+          "range": "TaxonomicRankEnum",
+          "required": false
+        },
+        "taxa_read_counts": {
+          "name": "taxa_read_counts",
+          "description": "A data item determining how many sequence reads have been assigned for a given taxon.",
+          "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+          "rank": 4,
+          "slot_uri": "STATO:0000064",
+          "alias": "taxa_read_counts",
+          "owner": "RMTM_ILS3_result",
+          "domain_of": [
+            "RMTM_ILS3_result"
+          ],
+          "range": "integer",
+          "required": false,
+          "minimum_value": 0
+        },
+        "is_sterility_contaminant": {
+          "name": "is_sterility_contaminant",
+          "description": "Whether the taxa detected is considered a sterility contaminant based on bioinformatic workflow output. In other words, would the detected taxa indicate that a cell therapy product is contaminated with said taxa?",
+          "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+          "rank": 6,
+          "alias": "is_sterility_contaminant",
+          "owner": "RMTM_ILS3_result",
+          "domain_of": [
+            "RMTM_ILS3_result"
+          ],
+          "range": "TaxaContaminationStatusEnum",
+          "required": true
+        },
+        "notes": {
+          "name": "notes",
+          "description": "Additional notes about the sample classification event",
+          "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
+          "rank": 5,
+          "alias": "notes",
+          "owner": "RMTM_ILS3_result",
+          "domain_of": [
+            "RMTM_ILS3_result"
+          ],
+          "range": "string"
+        }
+      }
+    }
+  },
+  "settings": {
+    "Title_Case": {
+      "setting_key": "Title_Case",
+      "setting_value": "(((?<=\\b)[^a-z\\W]\\w*?|[\\W])+)"
+    },
+    "UPPER_CASE": {
+      "setting_key": "UPPER_CASE",
+      "setting_value": "[A-Z\\W\\d_]*"
+    },
+    "lower_case": {
+      "setting_key": "lower_case",
+      "setting_value": "[a-z\\W\\d_]*"
+    }
+  },
+  "@type": "SchemaDefinition"
+}
