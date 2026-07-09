@@ -80,12 +80,12 @@
       "name": "TaxaContaminationStatusEnum",
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "permissible_values": {
-        "True": {
-          "text": "True",
+        "yes": {
+          "text": "yes",
           "title": "yes"
         },
-        "False": {
-          "text": "False",
+        "no": {
+          "text": "no",
           "title": "no"
         }
       }
