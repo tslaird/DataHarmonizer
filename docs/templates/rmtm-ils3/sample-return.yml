@@ -216,7 +216,7 @@ slots:
   signal_unit:
     description: >-
       The unit of measurement associated with the signal 
-      (e.g., reads, RPKM, core gene fraction, or 1 for presence-absence).
+      (e.g., reads, RPKM, core gene fraction, presence-absence, etc.).
     slot_uri: IAO:0000039
     range: SignalUnitEnum
     required: true

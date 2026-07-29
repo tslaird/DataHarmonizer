@@ -386,7 +386,7 @@
     },
     "signal_unit": {
       "name": "signal_unit",
-      "description": "The unit of measurement associated with the signal  (e.g., reads, RPKM, core gene fraction, or 1 for presence-absence).",
+      "description": "The unit of measurement associated with the signal  (e.g., reads, RPKM, core gene fraction, presence-absence, etc.).",
       "examples": [
         {
           "value": "reads",
@@ -556,7 +556,7 @@
         },
         "signal_unit": {
           "name": "signal_unit",
-          "description": "The unit of measurement associated with the signal  (e.g., reads, RPKM, core gene fraction, or 1 for presence-absence).",
+          "description": "The unit of measurement associated with the signal  (e.g., reads, RPKM, core gene fraction, presence-absence, etc.).",
           "examples": [
             {
               "value": "reads",
