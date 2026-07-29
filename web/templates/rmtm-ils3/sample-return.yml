@@ -41,6 +41,14 @@ types:
     base: Bool
     uri: xsd:boolean
     repr: bool
+  float:
+    description: "A real number that conforms to the xsd:float specification"
+    notes:
+    - If you are authoring schemas in LinkML YAML, the type is referenced with the lower case "float".
+    exact_mappings:
+    - "schema:Float"
+    base: float
+    uri: "xsd:float"
 
 enums:
   TaxonomicRankEnum:

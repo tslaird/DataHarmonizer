@@ -1,0 +1,6 @@
+sample_uuid,taxa_scientific_name,taxa_rank,signal,signal_unit,notes
+SAMP-2026-0881,Staphylococcus aureus,species,1200,reads
+e4d909c2,Candida,genera,0
+sample_f5e010d3,Bacillus subtilis,sp,-10,100
+7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d,Staphylococcus aureus,,45
+8b9c0d1e-2f3a,Cutibacterium acnes,species,0,reads
