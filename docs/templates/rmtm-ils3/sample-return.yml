@@ -1,0 +1,239 @@
+name: RMTM_ILS3_result
+description: A schema for reporting sample contamination and taxonomic classification
+id: https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml
+default_prefix: https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml
+default_range: string
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  shex: http://www.w3.org/ns/shex#
+  schema: http://schema.org/
+  ncbitaxon: http://purl.obolibrary.org/obo/ncbitaxon#
+  TAXRANK: http://purl.obolibrary.org/obo/TAXRANK_
+  STATO: http://purl.obolibrary.org/obo/STATO_
+  
+
+types:
+  WhitespaceMinimizedString:
+    description: A string that has all whitespace trimmed off of beginning and end, and all internal whitespace segments reduced to single spaces.
+    typeof: string
+    base: str
+    uri: xsd:token
+  string:
+    description: A character string
+    exact_mappings:
+      - schema:Text
+    base: str
+    uri: xsd:string
+  integer:
+    description: An integer
+    exact_mappings:
+      - schema:Integer
+    base: int
+    uri: xsd:integer
+  boolean:
+    description: A binary (true or false) value
+    exact_mappings:
+      - schema:Boolean
+    base: Bool
+    uri: xsd:boolean
+    repr: bool
+
+enums:
+  TaxonomicRankEnum:
+    description: Taxonomic ranks used to classify detected organisms.
+    permissible_values:
+      # Primary & High Level
+      domain:
+        meaning: TAXRANK:0000037
+      superkingdom:
+        meaning: TAXRANK:0000022
+      kingdom:
+        meaning: TAXRANK:0000017
+      subkingdom:
+        meaning: TAXRANK:0000029
+      phylum:
+        meaning: TAXRANK:0000001
+      subphylum:
+        meaning: TAXRANK:0000008
+      superclass:
+        meaning: TAXRANK:0000015
+      class:
+        meaning: TAXRANK:0000002
+      subclass:
+        meaning: TAXRANK:0000007
+      infraclass:
+        meaning: TAXRANK:0000019
+      
+      # Order & Family
+      superorder:
+        meaning: TAXRANK:0000020
+      order:
+        meaning: TAXRANK:0000003
+      suborder:
+        meaning: TAXRANK:0000014
+      infraorder:
+        meaning: TAXRANK:0000013
+      parvorder:
+        meaning: TAXRANK:0000021
+      superfamily:
+        meaning: TAXRANK:0000018
+      family:
+        meaning: TAXRANK:0000004
+      subfamily:
+        meaning: TAXRANK:0000024
+      
+      # Genus & Tribe
+      tribe:
+        meaning: TAXRANK:0000025
+      subtribe:
+        meaning: TAXRANK:0000028
+      genus:
+        meaning: TAXRANK:0000005
+      subgenus:
+        meaning: TAXRANK:0000009
+      
+      # Species & Infraspecific
+      species_group:
+        meaning: TAXRANK:0000010
+      species_subgroup:
+        meaning: TAXRANK:0000011
+      species:
+        meaning: TAXRANK:0000006
+      subspecies:
+        meaning: TAXRANK:0000023
+      varietas:
+        meaning: TAXRANK:0000016
+      subvariety:
+        meaning: TAXRANK:0000051
+      forma:
+        meaning: TAXRANK:0000026
+      forma_specialis:
+        meaning: TAXRANK:00001005
+      
+      # Viral & Metagenomic/Specialty
+      realm:
+        meaning: TAXRANK:0001013
+      clade:
+        meaning: TAXRANK:0001004
+      strain:
+        meaning: TAXRANK:0001001
+      isolate:
+        meaning: TAXRANK:0001002
+      serotype:
+        meaning: TAXRANK:0001003
+      serogroup:
+        meaning: TAXRANK:0001006
+      genotype:
+        meaning: TAXRANK:0001007
+      biotype:
+        meaning: TAXRANK:0001008
+      morph:
+        meaning: TAXRANK:0001009
+      cohort:
+        meaning: TAXRANK:0001010
+      subcohort:
+        meaning: TAXRANK:0001012
+      pathogroup:
+        meaning: TAXRANK:0001011
+      section:
+        meaning: TAXRANK:0000030
+      series:
+        meaning: TAXRANK:0000031
+      subsection:
+        meaning: TAXRANK:0000053
+      superphylum:
+        meaning: TAXRANK:0000027
+      # None
+      none:
+        meaning: NCIT:C41132
+        description: non-applicable or no rank could be assigned.
+
+slots:
+  sample_uuid:
+    description: Unique 8-character hexadecimal identifier for the sample.
+    range: string
+    required: true
+    pattern: "^[0-9a-fA-F]{8}$"
+
+  taxa_scientific_name:
+    description: The binomial or scientific name of the detected organism.
+    slot_uri: NCBITaxon:scientific_name
+    range: string
+    required: true
+
+  taxa_rank:
+    description: The taxonomic rank of the detected organism (e.g., species, genus).
+    slot_uri: TAXRANK:0000000
+    range: TaxonomicRankEnum
+    required: true
+
+  signal:
+    description: >-
+      The numeric magnitude of the detected readout corresponding to the signal unit (e.g., reads, 
+      RPKM, core gene fraction, or 1 for presence and 0 for absence).
+    slot_uri: IAO:0000004
+    range: float
+    minimum_value: 0
+    required: true
+
+  signal_unit:
+    description: >-
+      The unit of measurement associated with the signal 
+      (e.g., reads, RPKM, core gene fraction, or 1 for presence-absence).
+    slot_uri: IAO:0000039
+    range: SignalUnitEnum
+    required: true
+  notes:
+    description: Additional notes about the sample classification event if applicable
+    range: string
+
+classes:
+  dh_interface:
+    description: A DataHarmonizer interface
+  
+  RMTM_ILS3_result:
+    description: A class representing dataset validation for RMTM interlaboratory study
+    is_a: dh_interface
+    slots:
+      - sample_uuid
+      - taxa_scientific_name
+      - taxa_rank
+      - signal
+      - signal_unit
+      - notes
+    slot_usage:
+      sample_uuid:
+        rank: 1
+      taxa_scientific_name:
+        rank: 2
+      taxa_rank:
+        rank: 3
+      signal:
+        rank: 4
+      signal_unit:
+        rank: 5
+      notes:
+        rank: 6
+
+    # rules:
+    # - preconditions:
+    #     slot_conditions:
+    #       is_sterility_contaminant:
+    #         any_of:
+    #           - equals_string: "yes"
+    #   postconditions:
+    #     slot_conditions:
+    #       taxa_scientific_name:
+    #         required: true
+    #       taxa_read_counts:
+    #         required: true
+    #       taxa_rank:
+    #         required: true
+
+settings:
+  Title_Case: "(((?<=\\b)[^a-z\\W]\\w*?|[\\W])+)"
+  UPPER_CASE: "[A-Z\\W\\d_]*"
+  lower_case: "[a-z\\W\\d_]*"
+

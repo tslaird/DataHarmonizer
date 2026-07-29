@@ -113,7 +113,11 @@ yarn build:web
 ```
 Copy files to the docs folder for github hosting
 ```
+rm -r docs
+mkdir docs
 cp -r web/dist/* docs
+cp -r web/templates/* docs/templates
+
 ```
 run the script to fix paths in the docs/ folder:
 ```
