@@ -19,9 +19,9 @@
       "prefix_prefix": "schema",
       "prefix_reference": "http://schema.org/"
     },
-    "ncbitaxon": {
-      "prefix_prefix": "ncbitaxon",
-      "prefix_reference": "http://purl.obolibrary.org/obo/ncbitaxon#"
+    "dwc": {
+      "prefix_prefix": "dwc",
+      "prefix_reference": "http://rs.tdwg.org/dwc/terms/"
     },
     "TAXRANK": {
       "prefix_prefix": "TAXRANK",
@@ -30,6 +30,14 @@
     "STATO": {
       "prefix_prefix": "STATO",
       "prefix_reference": "http://purl.obolibrary.org/obo/STATO_"
+    },
+    "NCIT": {
+      "prefix_prefix": "NCIT",
+      "prefix_reference": "http://purl.obolibrary.org/obo/NCIT_"
+    },
+    "IAO": {
+      "prefix_prefix": "IAO",
+      "prefix_reference": "http://purl.obolibrary.org/obo/IAO_"
     }
   },
   "default_prefix": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
@@ -267,8 +275,8 @@
         },
         "none": {
           "text": "none",
-          "description": "non-applicable or no rank could be assigned.",
-          "meaning": "NCIT:C41132"
+          "description": "non-applicable.",
+          "meaning": "NCIT_C48660"
         }
       }
     }
@@ -277,6 +285,12 @@
     "sample_uuid": {
       "name": "sample_uuid",
       "description": "Unique 8-character hexadecimal identifier for the sample.",
+      "examples": [
+        {
+          "value": "3f8a002b",
+          "description": "Standard 8-character hexadecimal sample ID."
+        }
+      ],
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "domain_of": [
         "RMTM_ILS3_result"
@@ -287,9 +301,27 @@
     },
     "taxa_scientific_name": {
       "name": "taxa_scientific_name",
-      "description": "The binomial or scientific name of the detected organism.",
+      "description": "The formal scientific name of the detected organism at whatever rank was identified  (e.g., 'Cutibacterium acnes' for species, 'Staphylococcus' for genus, 'Bacillaceae' for family).  Input 'not_applicable' if 0 taxa were detected.",
+      "examples": [
+        {
+          "value": "Cutibacterium acnes",
+          "description": "Species-level scientific name."
+        },
+        {
+          "value": "Staphylococcus",
+          "description": "Genus-level scientific name when species cannot be resolved."
+        },
+        {
+          "value": "Bacillaceae",
+          "description": "Family-level scientific name from broader high-throughput reads."
+        },
+        {
+          "value": "not_applicable",
+          "description": "Selected when 0 taxa are detected in the sample."
+        }
+      ],
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
-      "slot_uri": "NCBITaxon:scientific_name",
+      "slot_uri": "dwc:scientificName",
       "domain_of": [
         "RMTM_ILS3_result"
       ],
@@ -299,6 +331,16 @@
     "taxa_rank": {
       "name": "taxa_rank",
       "description": "The taxonomic rank of the detected organism (e.g., species, genus).",
+      "examples": [
+        {
+          "value": "species",
+          "description": "Rank for a specific organism identification."
+        },
+        {
+          "value": "not_applicable",
+          "description": "Selected when no organism is detected in the sample."
+        }
+      ],
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "slot_uri": "TAXRANK:0000000",
       "domain_of": [
@@ -310,6 +352,16 @@
     "signal": {
       "name": "signal",
       "description": "The numeric magnitude of the detected readout corresponding to the signal unit (e.g., reads,  RPKM, core gene fraction, or 1 for presence and 0 for absence).",
+      "examples": [
+        {
+          "value": "4520.0",
+          "description": "Total sequencing read count mapped to the detected organism."
+        },
+        {
+          "value": "0.0",
+          "description": "Zero readout indicating a negative or sterile sample."
+        }
+      ],
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "slot_uri": "IAO:0000004",
       "domain_of": [
@@ -322,6 +374,16 @@
     "signal_unit": {
       "name": "signal_unit",
       "description": "The unit of measurement associated with the signal  (e.g., reads, RPKM, core gene fraction, or 1 for presence-absence).",
+      "examples": [
+        {
+          "value": "reads",
+          "description": "Raw read count metric from sequencing."
+        },
+        {
+          "value": "presence_absence",
+          "description": "Binary indicator metric for presence (1) or absence (0)."
+        }
+      ],
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "slot_uri": "IAO:0000039",
       "domain_of": [
@@ -348,7 +410,7 @@
     },
     "RMTM_ILS3_result": {
       "name": "RMTM_ILS3_result",
-      "description": "A class representing dataset validation for RMTM interlaboratory study",
+      "description": "A class representing dataset validation for RMTM interlaboratory study three (ILS3)",
       "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
       "is_a": "dh_interface",
       "slot_usage": {
@@ -381,6 +443,12 @@
         "sample_uuid": {
           "name": "sample_uuid",
           "description": "Unique 8-character hexadecimal identifier for the sample.",
+          "examples": [
+            {
+              "value": "3f8a002b",
+              "description": "Standard 8-character hexadecimal sample ID."
+            }
+          ],
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
           "rank": 1,
           "alias": "sample_uuid",
@@ -394,10 +462,28 @@
         },
         "taxa_scientific_name": {
           "name": "taxa_scientific_name",
-          "description": "The binomial or scientific name of the detected organism.",
+          "description": "The formal scientific name of the detected organism at whatever rank was identified  (e.g., 'Cutibacterium acnes' for species, 'Staphylococcus' for genus, 'Bacillaceae' for family).  Input 'not_applicable' if 0 taxa were detected.",
+          "examples": [
+            {
+              "value": "Cutibacterium acnes",
+              "description": "Species-level scientific name."
+            },
+            {
+              "value": "Staphylococcus",
+              "description": "Genus-level scientific name when species cannot be resolved."
+            },
+            {
+              "value": "Bacillaceae",
+              "description": "Family-level scientific name from broader high-throughput reads."
+            },
+            {
+              "value": "not_applicable",
+              "description": "Selected when 0 taxa are detected in the sample."
+            }
+          ],
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
           "rank": 2,
-          "slot_uri": "NCBITaxon:scientific_name",
+          "slot_uri": "dwc:scientificName",
           "alias": "taxa_scientific_name",
           "owner": "RMTM_ILS3_result",
           "domain_of": [
@@ -409,6 +495,16 @@
         "taxa_rank": {
           "name": "taxa_rank",
           "description": "The taxonomic rank of the detected organism (e.g., species, genus).",
+          "examples": [
+            {
+              "value": "species",
+              "description": "Rank for a specific organism identification."
+            },
+            {
+              "value": "not_applicable",
+              "description": "Selected when no organism is detected in the sample."
+            }
+          ],
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
           "rank": 3,
           "slot_uri": "TAXRANK:0000000",
@@ -423,6 +519,16 @@
         "signal": {
           "name": "signal",
           "description": "The numeric magnitude of the detected readout corresponding to the signal unit (e.g., reads,  RPKM, core gene fraction, or 1 for presence and 0 for absence).",
+          "examples": [
+            {
+              "value": "4520.0",
+              "description": "Total sequencing read count mapped to the detected organism."
+            },
+            {
+              "value": "0.0",
+              "description": "Zero readout indicating a negative or sterile sample."
+            }
+          ],
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
           "rank": 4,
           "slot_uri": "IAO:0000004",
@@ -438,6 +544,16 @@
         "signal_unit": {
           "name": "signal_unit",
           "description": "The unit of measurement associated with the signal  (e.g., reads, RPKM, core gene fraction, or 1 for presence-absence).",
+          "examples": [
+            {
+              "value": "reads",
+              "description": "Raw read count metric from sequencing."
+            },
+            {
+              "value": "presence_absence",
+              "description": "Binary indicator metric for presence (1) or absence (0)."
+            }
+          ],
           "from_schema": "https://github.com/tslaird/DataHarmonizer/blob/dev-ils3/web/templates/rmtm-ils3/sample-return.yml",
           "rank": 5,
           "slot_uri": "IAO:0000039",

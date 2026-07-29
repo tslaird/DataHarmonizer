@@ -9,9 +9,11 @@ prefixes:
   xsd: http://www.w3.org/2001/XMLSchema#
   shex: http://www.w3.org/ns/shex#
   schema: http://schema.org/
-  ncbitaxon: http://purl.obolibrary.org/obo/ncbitaxon#
+  dwc: http://rs.tdwg.org/dwc/terms/
   TAXRANK: http://purl.obolibrary.org/obo/TAXRANK_
   STATO: http://purl.obolibrary.org/obo/STATO_
+  NCIT: http://purl.obolibrary.org/obo/NCIT_
+  IAO:  http://purl.obolibrary.org/obo/IAO_
   
 
 types:
@@ -147,8 +149,8 @@ enums:
         meaning: TAXRANK:0000027
       # None
       none:
-        meaning: NCIT:C41132
-        description: non-applicable or no rank could be assigned.
+        meaning: NCIT_C48660
+        description: non-applicable.
 
 slots:
   sample_uuid:
@@ -156,18 +158,38 @@ slots:
     range: string
     required: true
     pattern: "^[0-9a-fA-F]{8}$"
+    examples:
+      - value: "3f8a002b"
+        description: Standard 8-character hexadecimal sample ID.
 
   taxa_scientific_name:
-    description: The binomial or scientific name of the detected organism.
-    slot_uri: NCBITaxon:scientific_name
+    description: >-
+      The formal scientific name of the detected organism at whatever rank was identified 
+      (e.g., 'Cutibacterium acnes' for species, 'Staphylococcus' for genus, 'Bacillaceae' for family). 
+      Input 'not_applicable' if 0 taxa were detected.
+    slot_uri: dwc:scientificName
     range: string
     required: true
+    examples:
+      - value: "Cutibacterium acnes"
+        description: Species-level scientific name.
+      - value: "Staphylococcus"
+        description: Genus-level scientific name when species cannot be resolved.
+      - value: "Bacillaceae"
+        description: Family-level scientific name from broader high-throughput reads.
+      - value: "not_applicable"
+        description: Selected when 0 taxa are detected in the sample.
 
   taxa_rank:
     description: The taxonomic rank of the detected organism (e.g., species, genus).
     slot_uri: TAXRANK:0000000
     range: TaxonomicRankEnum
     required: true
+    examples:
+      - value: "species"
+        description: Rank for a specific organism identification.
+      - value: "not_applicable"
+        description: Selected when no organism is detected in the sample.
 
   signal:
     description: >-
@@ -177,6 +199,11 @@ slots:
     range: float
     minimum_value: 0
     required: true
+    examples:
+      - value: "4520.0"
+        description: Total sequencing read count mapped to the detected organism.
+      - value: "0.0"
+        description: Zero readout indicating a negative or sterile sample.
 
   signal_unit:
     description: >-
@@ -185,6 +212,12 @@ slots:
     slot_uri: IAO:0000039
     range: SignalUnitEnum
     required: true
+    examples:
+      - value: "reads"
+        description: Raw read count metric from sequencing.
+      - value: "presence_absence"
+        description: Binary indicator metric for presence (1) or absence (0).
+
   notes:
     description: Additional notes about the sample classification event if applicable
     range: string
@@ -194,7 +227,7 @@ classes:
     description: A DataHarmonizer interface
   
   RMTM_ILS3_result:
-    description: A class representing dataset validation for RMTM interlaboratory study
+    description: A class representing dataset validation for RMTM interlaboratory study three (ILS3)
     is_a: dh_interface
     slots:
       - sample_uuid
