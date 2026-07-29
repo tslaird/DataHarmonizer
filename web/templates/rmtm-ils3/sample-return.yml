@@ -41,11 +41,8 @@ types:
     repr: bool
 
 enums:
-  TaxaContaminationStatusEnum:
-    permissible_values:
-      yes: {title: "yes"}
-      no: {title: "no"}
   TaxonomicRankEnum:
+    description: Taxonomic ranks used to classify detected organisms.
     permissible_values:
       # Primary & High Level
       domain:
@@ -98,9 +95,9 @@ enums:
         meaning: TAXRANK:0000009
       
       # Species & Infraspecific
-      species group:
+      species_group:
         meaning: TAXRANK:0000010
-      species subgroup:
+      species_subgroup:
         meaning: TAXRANK:0000011
       species:
         meaning: TAXRANK:0000006
@@ -112,7 +109,7 @@ enums:
         meaning: TAXRANK:0000051
       forma:
         meaning: TAXRANK:0000026
-      forma specialis:
+      forma_specialis:
         meaning: TAXRANK:00001005
       
       # Viral & Metagenomic/Specialty
@@ -148,36 +145,48 @@ enums:
         meaning: TAXRANK:0000053
       superphylum:
         meaning: TAXRANK:0000027
+      # None
+      none:
+        meaning: NCIT:C41132
+        description: non-applicable or no rank could be assigned.
 
 slots:
   sample_uuid:
-    description: The 8-character unique identifier (UUID) for the sample
+    description: Unique 8-character hexadecimal identifier for the sample.
     range: string
     required: true
     pattern: "^[0-9a-fA-F]{8}$"
-  is_sterility_contaminant:
-    description: Whether the taxa detected is considered a sterility contaminant based on bioinformatic workflow output. In other words, would the detected taxa indicate that a cell therapy product is contaminated with said taxa?
-    range: TaxaContaminationStatusEnum
-    required: true
+
   taxa_scientific_name:
-    description: >-
-      The scientific name for the detected taxon
-    slot_uri: ncbitaxon:scientific_name
+    description: The binomial or scientific name of the detected organism.
+    slot_uri: NCBITaxon:scientific_name
     range: string
+    required: true
+
   taxa_rank:
-      description: The taxonomic rank of the detected organism.
-      slot_uri: TAXRANK:0000000
-      range: TaxonomicRankEnum
-      required: false
-  taxa_read_counts:
-      description: >-
-        A data item determining how many sequence reads have been assigned for a given taxon.
-      slot_uri: STATO:0000064
-      range: integer
-      minimum_value: 0
-      required: false
+    description: The taxonomic rank of the detected organism (e.g., species, genus).
+    slot_uri: TAXRANK:0000000
+    range: TaxonomicRankEnum
+    required: true
+
+  signal:
+    description: >-
+      The numeric magnitude of the detected readout corresponding to the signal unit (e.g., reads, 
+      RPKM, core gene fraction, or 1 for presence and 0 for absence).
+    slot_uri: IAO:0000004
+    range: float
+    minimum_value: 0
+    required: true
+
+  signal_unit:
+    description: >-
+      The unit of measurement associated with the signal 
+      (e.g., reads, RPKM, core gene fraction, or 1 for presence-absence).
+    slot_uri: IAO:0000039
+    range: SignalUnitEnum
+    required: true
   notes:
-    description: Additional notes about the sample classification event
+    description: Additional notes about the sample classification event if applicable
     range: string
 
 classes:
@@ -191,8 +200,8 @@ classes:
       - sample_uuid
       - taxa_scientific_name
       - taxa_rank
-      - taxa_read_counts
-      - is_sterility_contaminant
+      - signal
+      - signal_unit
       - notes
     slot_usage:
       sample_uuid:
@@ -201,11 +210,11 @@ classes:
         rank: 2
       taxa_rank:
         rank: 3
-      taxa_read_counts:
+      signal:
         rank: 4
-      notes:
+      signal_unit:
         rank: 5
-      is_sterility_contaminant:
+      notes:
         rank: 6
 
     # rules:

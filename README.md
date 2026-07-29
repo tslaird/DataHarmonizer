@@ -88,6 +88,39 @@ Troubleshooting Note:
 
 "scripts/main.js" -> "./scripts/main.js"
 
+
+## update instructions
+
+modify schema as needed and lint with:
+```
+linkml lint <input-scema.yml>
+```
+There is an error with:
+```
+  warning  Class has name 'dh_interface'  (standard_naming)
+  warning  Class has name 'RMTM_ILS3_result'  (standard_naming)
+```
+but I leave it be along with any case warnings for the schema class
+
+Next add the schema from within the schema directory:
+```
+conda activate linkml-toolkit
+python ../../../script/linkml.py -i <schema.yml>
+```
+Then build within the main repo directory and make sure you deactivate the linkml-toolkit conda env"
+```
+yarn build:web
+```
+Copy files to the docs folder for github hosting
+```
+cp -r web/dist/* docs
+```
+run the script to fix paths in the docs/ folder:
+```
+./script/fix-paths.sh docs/
+```
+
+
 # Original README:
 
 # DataHarmonizer
